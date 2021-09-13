@@ -9,7 +9,8 @@ public class Enemy : MonoBehaviour
     {
         Moving,
         Attacking,
-        Dead
+        Dead,
+        Victory
     };
 
     public EnemyState enemyState;
