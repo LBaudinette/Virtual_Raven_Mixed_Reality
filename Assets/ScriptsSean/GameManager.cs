@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private bool gameEnded = false;
 
     public static bool gameIsOver;
 
     public GameObject gameOverUI;
+    public ParticleSystem smokeParticles;
 
     private void Start()
     {
         gameIsOver = false;
+        smokeParticles.Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameEnded)
+        if (gameIsOver)
         {
             return;
         }
@@ -31,7 +32,8 @@ public class GameManager : MonoBehaviour
 
     void EndGame()
     {
-        gameEnded = true;
+        gameIsOver = true;
+        smokeParticles.Play();
         gameOverUI.SetActive(true);
     }
 }

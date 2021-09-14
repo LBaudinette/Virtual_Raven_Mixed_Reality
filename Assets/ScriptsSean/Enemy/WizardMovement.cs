@@ -45,6 +45,17 @@ public class WizardMovement : MonoBehaviour
         //    return;
         //}
 
+        if (wizard.enemyState == Wizard.EnemyState.Victory)
+        {
+            return;
+        }
+
+        //if(gateIsDestroyed){
+        //wizard.animator.SetBool("GateDestoryed", true);
+        //wizard.enemyState = Wizard.EnemyState.Victory
+        //}
+
+
         // move to ledge between two patrol points
         if (transform.position.z > target.position.z)
         {

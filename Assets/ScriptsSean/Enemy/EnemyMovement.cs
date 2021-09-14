@@ -37,6 +37,19 @@ public class EnemyMovement : MonoBehaviour
             }
             return;
         }
+
+        if (enemy.enemyState == Enemy.EnemyState.Victory)
+        {
+            return;
+        }
+
+        if (GameManager.gameIsOver)
+        {
+            enemy.enemyState = Enemy.EnemyState.Victory;
+            enemy.animator.SetBool("GateDestroyed", true);
+            return;
+        }
+
         if (transform.position.x < target.position.x)
         {
             enemy.animator.SetBool("Walking", false);

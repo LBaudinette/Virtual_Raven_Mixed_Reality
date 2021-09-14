@@ -47,7 +47,6 @@ public class Wizard : MonoBehaviour
         speed = startSpeed;
         enemyHealth = enemyStartingHealth;
         enemyState = EnemyState.Moving;
-        animator.SetBool("Walking", true);
     }
 
     public void TakeDamage(float amount)
