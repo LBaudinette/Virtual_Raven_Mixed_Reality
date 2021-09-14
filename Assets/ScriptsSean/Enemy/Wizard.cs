@@ -30,7 +30,7 @@ public class Wizard : MonoBehaviour
     public int enemyDamage = 5;
     public float enemyStartingHealth = 100f;
     public float enemyHealth = 100f;
-    public int enemyScoreGain = 50;
+    public int enemyScoreGain = 100;
     public float attackDelay = 1.0f;
     public Canvas enemyCanvas;
     [HideInInspector] public bool deathAnimationDone = false;
@@ -65,7 +65,7 @@ public class Wizard : MonoBehaviour
     {
         enemyState = EnemyState.Dead;
         animator.SetBool("IsDead", true);
-        PlayerStats.score += enemyScoreGain;
+        PlayerStats.AddToScore(enemyScoreGain);
         // play enemy death animation
         // have them sink into the ground and then destroy
         enemyCollider.enabled = false;

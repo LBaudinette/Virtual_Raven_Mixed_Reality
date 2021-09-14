@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
     {
         enemyHealth -= amount;
 
-        healthBar.fillAmount = enemyHealth / enemyStartingHealth;
+        healthBar.fillAmount = (float)enemyHealth / (float)enemyStartingHealth;
 
         if(enemyHealth <= 0 && enemyState != EnemyState.Dead)
         {
@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
     {
         enemyState = EnemyState.Dead;
         animator.SetBool("IsDead", true);
-        PlayerStats.score += enemyScoreGain;
+        PlayerStats.AddToScore(enemyScoreGain);
         // play enemy death animation
         // have them sink into the ground and then destroy
         enemyCollider.enabled = false;

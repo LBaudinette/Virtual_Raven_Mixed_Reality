@@ -35,26 +35,27 @@ public class WizardMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (enemy.enemyState == Enemy.EnemyState.Dead)
-        //{
-        //    if (enemy.deathAnimationDone)
-        //    {
-        //        //transform.Translate(Vector3.down.y * enemy.speed * Time.deltaTime, 0, 0, Space.World);
-        //        transform.Translate(0, Vector3.down.y * enemy.speed * Time.deltaTime, 0, Space.World);
-        //    }
-        //    return;
-        //}
+        if (wizard.enemyState == Wizard.EnemyState.Dead)
+        {
+            if (wizard.deathAnimationDone)
+            {
+                //transform.Translate(Vector3.down.y * enemy.speed * Time.deltaTime, 0, 0, Space.World);
+                transform.Translate(0, Vector3.down.y * wizard.speed * Time.deltaTime, 0, Space.World);
+            }
+            return;
+        }
 
         if (wizard.enemyState == Wizard.EnemyState.Victory)
         {
             return;
         }
 
-        //if(gateIsDestroyed){
-        //wizard.animator.SetBool("GateDestoryed", true);
-        //wizard.enemyState = Wizard.EnemyState.Victory
-        //}
-
+        if (GameManager.gameIsOver)
+        {
+            wizard.animator.SetBool("GateDestoryed", true);
+            wizard.enemyState = Wizard.EnemyState.Victory;
+            return;
+        }
 
         // move to ledge between two patrol points
         if (transform.position.z > target.position.z)
@@ -156,13 +157,13 @@ public class WizardMovement : MonoBehaviour
     private IEnumerator LookAt()
     {
         Quaternion lookRotation = Quaternion.LookRotation(patrolPoints[patrolPointIndex].position - transform.position);
-        Debug.Log(lookRotation);
+        //Debug.Log(lookRotation);
         float time = 0;
 
         while (time < 1)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, time);
-            Debug.Log(transform.rotation);
+            //Debug.Log(transform.rotation);
             time += Time.deltaTime * rotationSpeed;
 
             yield return null;

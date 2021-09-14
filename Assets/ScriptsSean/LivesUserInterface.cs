@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class LivesUserInterface : MonoBehaviour
 {
-    public Text livesText;
+    public Image gateHealth;
+    [SerializeField] private int startingGateHealth = 100;
 
     // Update is called once per frame
     void Update()
     {
-        livesText.text = "Gate\n" + PlayerStats.gatehealth.ToString();
+        gateHealth.fillAmount = (float)PlayerStats.gatehealth / (float)startingGateHealth;
+        Debug.Log("gate health" + PlayerStats.gatehealth.ToString());
+        Debug.Log("fill amount" + gateHealth.fillAmount.ToString());
     }
 }

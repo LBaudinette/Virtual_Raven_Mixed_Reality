@@ -75,7 +75,8 @@ public class EnemyMovement : MonoBehaviour
         if (!alreadyAttacked)
         {
             enemy.animator.SetBool("Attacking", true);
-            PlayerStats.gatehealth -= enemy.enemyDamage;
+            PlayerStats.MinusGateHealth(enemy.enemyDamage);
+            Debug.Log(PlayerStats.gatehealth);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
