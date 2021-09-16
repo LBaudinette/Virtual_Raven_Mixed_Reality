@@ -23,6 +23,10 @@ public class Wizard : MonoBehaviour
     public EnemyState enemyState;
     public WizardType wizardType;
 
+    // wizard type variables
+    [SerializeField] private Material[] wizardMaterials;
+    [SerializeField] private SkinnedMeshRenderer wizardMesh;
+
     public float startSpeed = 10f;
     [HideInInspector]
     public float speed;
@@ -39,6 +43,14 @@ public class Wizard : MonoBehaviour
     public Image healthBar;
     [HideInInspector] public Animator animator;
     private SphereCollider enemyCollider;
+
+    private void Awake()
+    {
+        // assign wizard type enum and material
+        int randomWizardInt = Random.Range(0, 3);
+        wizardType = (WizardType)randomWizardInt;
+        wizardMesh.material = wizardMaterials[randomWizardInt];
+    }
 
     private void Start()
     {

@@ -255,6 +255,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyState: 0
   wizardType: 0
+  wizardMaterials:
+  - {fileID: 2100000, guid: a1405f063bd9f1c41810d184f516caef, type: 2}
+  - {fileID: 2100000, guid: f61330fe540e266418f02025dc740841, type: 2}
+  - {fileID: 2100000, guid: 2b70e2e468f53b3448a5c1ce8537cef2, type: 2}
+  wizardMesh: {fileID: 3482074983339410480}
   startSpeed: 5
   speed: 0
   afterSlowDelay: 5
@@ -449,6 +454,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wizard
       objectReference: {fileID: 0}
+    - target: {fileID: 6508009244554803019, guid: 9e3085642917b6c4e9831bcd22006871,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8328281101569706349, guid: 9e3085642917b6c4e9831bcd22006871,
         type: 3}
       propertyPath: m_RootOrder
@@ -515,6 +525,12 @@ GameObject:
 --- !u!4 &446976788665117796 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8328281101569706349, guid: 9e3085642917b6c4e9831bcd22006871,
+    type: 3}
+  m_PrefabInstance: {fileID: 8475779498314556681}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3482074983339410480 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5040324250916593977, guid: 9e3085642917b6c4e9831bcd22006871,
     type: 3}
   m_PrefabInstance: {fileID: 8475779498314556681}
   m_PrefabAsset: {fileID: 0}
