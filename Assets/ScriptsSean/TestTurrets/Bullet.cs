@@ -27,11 +27,11 @@ public class Bullet : MonoBehaviour
         Vector3 direction = target.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
 
-        if (direction.magnitude <= distanceThisFrame)
-        {
-            HitTarget();
-            return;
-        }
+        //if (direction.magnitude <= distanceThisFrame)
+        //{
+        //    HitTarget();
+        //    return;
+        //}
 
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
     }
@@ -70,6 +70,14 @@ public class Bullet : MonoBehaviour
         if(e != null)
         {
             e.TakeDamage(bulletDamage);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Enemy"))
+        {
+            HitTarget();
         }
     }
 

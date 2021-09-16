@@ -22777,6 +22777,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3454563698100032066, guid: d0c8faf34fac447428b8a9365a73e64f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3924771132563176314, guid: d0c8faf34fac447428b8a9365a73e64f,
         type: 3}
       propertyPath: m_RootOrder
@@ -22905,6 +22910,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336121310810027849, guid: 99c4d84ce635b33458a20b41fa3433e0,
+        type: 3}
+      propertyPath: range
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99c4d84ce635b33458a20b41fa3433e0, type: 3}
