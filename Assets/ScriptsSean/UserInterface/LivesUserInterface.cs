@@ -12,7 +12,7 @@ public class LivesUserInterface : MonoBehaviour
     void Update()
     {
         gateHealth.fillAmount = (float)PlayerStats.gatehealth / (float)startingGateHealth;
-        Debug.Log("gate health" + PlayerStats.gatehealth.ToString());
-        Debug.Log("fill amount" + gateHealth.fillAmount.ToString());
+        //Debug.Log("gate health" + PlayerStats.gatehealth.ToString());
+        //Debug.Log("fill amount" + gateHealth.fillAmount.ToString());
     }
 }

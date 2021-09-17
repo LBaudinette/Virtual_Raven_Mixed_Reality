@@ -6,19 +6,18 @@ using UnityEngine;
 [RequireComponent(typeof(Wizard))]
 public class WizardMovement : MonoBehaviour
 {
-    public Transform[] patrolPoints;   // 2 waypoints for each spawn
-    public Transform target;
+    [Header("Reference to Scene Componenents")]
+    [SerializeField] private Transform[] patrolPoints;   // 2 waypoints for each spawn
+    [SerializeField] private Transform target;
     private Wizard wizard;
 
-    public float distanceToCurrentPatrolPoint;
-    public int patrolPointIndex;
-
-    //turning  variables
+    [Header("Movement Variables")]
+    [SerializeField] private float distanceToCurrentPatrolPoint;
+    [SerializeField] private int patrolPointIndex;
     private Coroutine lookCoroutine;
-    public float rotationSpeed = 1.0f;
-    public float excitation = 2.0f;
-    public bool hasAttacked = false;
-    public bool isAttacking = false;
+    [SerializeField] private float rotationSpeed = 2.0f;
+    private bool hasAttacked = false;
+    private bool isAttacking = false;
 
     private void Awake()
     {
@@ -26,10 +25,12 @@ public class WizardMovement : MonoBehaviour
         patrolPointIndex = 0;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        //transform.LookAt(patrolPoints[patrolPointIndex].position);
+        patrolPointIndex = 0;
+        distanceToCurrentPatrolPoint = 0;
+        hasAttacked = false;
+        isAttacking = false;
     }
 
     // Update is called once per frame
@@ -52,7 +53,7 @@ public class WizardMovement : MonoBehaviour
 
         if (GameManager.gameIsOver)
         {
-            wizard.animator.SetBool("GateDestoryed", true);
+            wizard.animator.SetBool("GateDestroyed", true);
             wizard.enemyState = Wizard.EnemyState.Victory;
             return;
         }
@@ -67,19 +68,15 @@ public class WizardMovement : MonoBehaviour
         if (isAttacking)
         {
             float playerAngle = Quaternion.Angle(transform.rotation, DummyPlayerScript.playerPosition.rotation);
-            Debug.Log(playerAngle);
+            //Debug.Log(playerAngle);
             if (playerAngle > 1.0f)
             {
                 // The step size is equal to speed times frame time.
                 float step = rotationSpeed * Time.deltaTime;
 
-                //// Rotate our transform a step closer to the target's.
-                //transform.rotation = Quaternion.RotateTowards(transform.rotation, DummyPlayerScript.playerPosition.rotation, step);
-
                 Vector3 lookVector = DummyPlayerScript.playerPosition.position - transform.position;
-                //lookVector.y = transform.position.y;
                 Quaternion rotation = Quaternion.LookRotation(lookVector);
-                //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
+
                 // Rotate our transform a step closer to the target's.
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, step);
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
@@ -88,10 +85,10 @@ public class WizardMovement : MonoBehaviour
         else
         {
             float angle = Quaternion.Angle(transform.rotation, patrolPoints[patrolPointIndex].rotation);
-            //Debug.Log(angle);
+            Debug.Log("Angle towards patrol point " + patrolPointIndex + ": " + angle + ". hasAttacked = " + hasAttacked);
 
             //turn until facing current patrol point
-            if (angle > 1.0f)
+            if (angle > 1.0f && hasAttacked == false)
             {
                 // The step size is equal to speed times frame time.
                 float step = rotationSpeed * Time.deltaTime;
@@ -101,9 +98,11 @@ public class WizardMovement : MonoBehaviour
             }
             else
             {
-                // line up rotation exactly to prevent unwanted movement in the z dimension while patrolling
-                transform.rotation = patrolPoints[patrolPointIndex].rotation;
-
+                if (!hasAttacked)
+                {
+                    // line up rotation exactly to prevent unwanted movement in the z dimension while patrolling
+                    transform.rotation = patrolPoints[patrolPointIndex].rotation;
+                }
 
                 distanceToCurrentPatrolPoint = Vector3.Distance(transform.position, patrolPoints[patrolPointIndex].position);
 
@@ -116,6 +115,8 @@ public class WizardMovement : MonoBehaviour
                         isAttacking = true;
                         AttackPlayer();
                     }
+
+                    // start moving to next control point
                     if (hasAttacked)
                     {
                         IncreaseIndex();
@@ -132,7 +133,6 @@ public class WizardMovement : MonoBehaviour
 
     void Patrol()
     {
-
         transform.Translate(Vector3.forward * wizard.speed * Time.deltaTime);
     }
 
@@ -172,26 +172,34 @@ public class WizardMovement : MonoBehaviour
 
     private void AttackPlayer()
     {
-        wizard.animator.SetBool("Attacking", true);
-        Invoke(nameof(FireSpell), wizard.attackDelay);
+        StartCoroutine(FireSpell());
     }
 
-    private void FireSpell()
+    IEnumerator FireSpell()
     {
-        Debug.Log("Attack");
+        // wait for wizard to finish moving to position
+        yield return new WaitForSeconds(wizard.attackDelay);
+        wizard.animator.SetBool("Attacking", true);
+
+        // wait for attack animation to reach the exact point where it should be firing a spell
+        yield return new WaitForSeconds(wizard.beforeAttackDelay);
+        //Debug.Log("Attack");
 
         // --instantiate spell here--
 
 
-        //
+        // --
 
-        Invoke(nameof(FinishAttack), wizard.attackDelay);
+        // wait until attack animation is done
+        yield return new WaitForSeconds(wizard.attackAnimationLength);
+        StartCoroutine(FinishAttack());
     }
 
-    private void FinishAttack()
+    IEnumerator FinishAttack()
     {
         hasAttacked = true;
         isAttacking = false;
         wizard.animator.SetBool("Attacking", false);
+        yield return null;
     }
 }

@@ -465,6 +465,8 @@ MonoBehaviour:
   enemyHealth: 100
   enemyScoreGain: 50
   enemyCanvas: {fileID: 1534466599}
+  timeBetweenAttacks: 3
+  timeBeforeAttack: 0.5
   deathAnimationDone: 0
   healthBar: {fileID: 4419464375699894974}
   animator: {fileID: 0}
@@ -494,7 +496,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  timeBetweenAttacks: 6
 --- !u!54 &-1343108835805762427
 Rigidbody:
   m_ObjectHideFlags: 0

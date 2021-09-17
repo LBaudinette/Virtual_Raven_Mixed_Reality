@@ -5,25 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour
 {
-    public Transform target;
-    //private int wavePointIndex = 0;
+    [SerializeField] private Transform target;
 
     private Enemy enemy;
     private bool alreadyAttacked = false;
-
-
-    public float timeBetweenAttacks = 6.0f;
 
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
         target = WayPoint.point;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     private void Update()
@@ -32,7 +22,6 @@ public class EnemyMovement : MonoBehaviour
         {
             if (enemy.deathAnimationDone)
             {
-                //transform.Translate(Vector3.down.y * enemy.speed * Time.deltaTime, 0, 0, Space.World);
                 transform.Translate(0, Vector3.down.y * enemy.speed * Time.deltaTime, 0, Space.World);
             }
             return;
@@ -50,36 +39,37 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
+        // if not at gate move to target
         if (transform.position.x < target.position.x)
         {
             enemy.animator.SetBool("Walking", false);
-            AttackGate();
+            if (!alreadyAttacked)
+            {
+                StartCoroutine(AttackGate());
+            }
         }
         else
         {
-            //Vector3 direction = target.position - transform.position;
-            //transform.Translate(direction.normalized.x * Speed * Time.deltaTime, 0, 0, Space.World);
-            //float direction = target.position.x - transform.position.x;
-
             transform.Translate(Vector3.left.x * enemy.speed * Time.deltaTime, 0, 0, Space.World);
         }
-
-        //enemy.speed = enemy.startSpeed;
     }
 
-    private void AttackGate()
+    IEnumerator AttackGate()
     {
-        //
-        //return;
-
-        if (!alreadyAttacked)
-        {
-            enemy.animator.SetBool("Attacking", true);
-            PlayerStats.MinusGateHealth(enemy.enemyDamage);
-            Debug.Log(PlayerStats.gatehealth);
             alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
+            enemy.animator.SetBool("Attacking", true);
+
+            // wait for enemy to stab the gate
+            yield return new WaitForSeconds(enemy.timeBeforeAttack);
+
+            // damage the gate
+            PlayerStats.MinusGateHealth(enemy.enemyDamage);
+
+            //Debug.Log(PlayerStats.gatehealth);
+            
+            // wait until enemy can attack
+            yield return new WaitForSeconds(enemy.timeBetweenAttacks);
+            ResetAttack();
     }
 
     private void ResetAttack()

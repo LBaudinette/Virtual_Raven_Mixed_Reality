@@ -13,22 +13,31 @@ public class Enemy : MonoBehaviour
         Victory
     };
 
+    [Header("Enemy Enums")]
     public EnemyState enemyState;
-    public float startSpeed = 10f;
-    [HideInInspector]
-    public float speed;
-    public float afterSlowDelay = 5.0f;
+
+    [Header("Enemy Movement Speed")]
+    [SerializeField] private float startSpeed = 10f;
+    [HideInInspector] public float speed;
+    [SerializeField] private float afterSlowDelay = 5.0f;
+
+    [Header("Damage Variables")]
     public int enemyDamage = 5;
-    public float enemyStartingHealth = 100f;
-    public float enemyHealth = 100f;
-    public int enemyScoreGain = 50;
-    public Canvas enemyCanvas;
+    [SerializeField] private float enemyStartingHealth = 100f;
+    [SerializeField] private float enemyHealth = 100f;
+    [SerializeField] private int enemyScoreGain = 50;
+
+    [Header("Animation Variables")]
+    public float timeBetweenAttacks = 4.0f;
+    public float timeBeforeAttack = 1.0f;
     [HideInInspector] public bool deathAnimationDone = false;
 
     [Header("Unity Stuff")]
+    [SerializeField] private Canvas enemyCanvas;
     public Image healthBar;
     [HideInInspector] public Animator animator;
     private SphereCollider enemyCollider;
+
 
     private void Start()
     {
@@ -70,13 +79,10 @@ public class Enemy : MonoBehaviour
         enemyState = EnemyState.Dead;
         animator.SetBool("IsDead", true);
         PlayerStats.AddToScore(enemyScoreGain);
-        // play enemy death animation
         // have them sink into the ground and then destroy
         enemyCollider.enabled = false;
         enemyCanvas.enabled = false;
-        //Destroy(gameObject);
         StartCoroutine(WaitForDeathAnimation());
-        //StartCoroutine(SinkEnemyIntoGround());
     }
 
     IEnumerator WaitForDeathAnimation()

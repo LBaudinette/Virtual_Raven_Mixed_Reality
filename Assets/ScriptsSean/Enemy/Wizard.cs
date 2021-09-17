@@ -20,45 +20,78 @@ public class Wizard : MonoBehaviour
         Victory
     };
 
+    [Header("Enemy Enums")]
     public EnemyState enemyState;
     public WizardType wizardType;
 
-    // wizard type variables
+    [Header("Wizard Type Variables")]
     [SerializeField] private Material[] wizardMaterials;
     [SerializeField] private SkinnedMeshRenderer wizardMesh;
 
-    public float startSpeed = 10f;
-    [HideInInspector]
-    public float speed;
-    public float afterSlowDelay = 5.0f;
+    [Header("Wizard Movement Speed")]
+    [SerializeField] private float startSpeed = 10f;
+    [HideInInspector] public float speed;
+    [SerializeField] private float afterSlowDelay = 5.0f;
+
+    [Header("Damage Variables")]
     public int enemyDamage = 5;
     public float enemyStartingHealth = 100f;
     public float enemyHealth = 100f;
     public int enemyScoreGain = 100;
-    public float attackDelay = 1.0f;
-    public Canvas enemyCanvas;
+
+    [Header("Animation Variables")]
     [HideInInspector] public bool deathAnimationDone = false;
+    public float attackDelay = 1.0f;
+    public float attackAnimationLength = 1.10f;
+    public float beforeAttackDelay = 0.5f;
 
     [Header("Unity Stuff")]
     public Image healthBar;
+    public Canvas enemyCanvas;
     [HideInInspector] public Animator animator;
     private SphereCollider enemyCollider;
 
     private void Awake()
     {
-        // assign wizard type enum and material
-        int randomWizardInt = Random.Range(0, 3);
-        wizardType = (WizardType)randomWizardInt;
-        wizardMesh.material = wizardMaterials[randomWizardInt];
+        animator = GetComponent<Animator>();
+        enemyCollider = GetComponent<SphereCollider>();
+        AssignWizardType();
+    }
+    private void OnEnable()
+    {
+        ResetObject();
     }
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
-        enemyCollider = GetComponent<SphereCollider>();
+
         speed = startSpeed;
         enemyHealth = enemyStartingHealth;
         enemyState = EnemyState.Moving;
+    }
+
+    public void ResetObject()
+    {
+        AssignWizardType();
+        enemyHealth = enemyStartingHealth;
+        healthBar.fillAmount = enemyHealth / enemyStartingHealth;
+        transform.localPosition = new Vector3(0, 0, 0);
+        transform.eulerAngles = new Vector3(0f, 180f, 0f);
+        enemyState = EnemyState.Moving;
+
+        speed = startSpeed;
+        animator.SetBool("IsDead", false);
+        enemyCollider.enabled = true;
+        enemyCanvas.enabled = true;
+        deathAnimationDone = false;
+    }
+
+    private void AssignWizardType()
+    {
+        // assign wizard type enum and material
+        int randomWizardInt = Random.Range(0, 3);
+        wizardType = (WizardType)randomWizardInt;
+        wizardMesh.material = wizardMaterials[randomWizardInt];
     }
 
     public void TakeDamage(float amount)
@@ -78,13 +111,10 @@ public class Wizard : MonoBehaviour
         enemyState = EnemyState.Dead;
         animator.SetBool("IsDead", true);
         PlayerStats.AddToScore(enemyScoreGain);
-        // play enemy death animation
         // have them sink into the ground and then destroy
         enemyCollider.enabled = false;
         enemyCanvas.enabled = false;
-        //Destroy(gameObject);
         StartCoroutine(WaitForDeathAnimation());
-        //StartCoroutine(SinkEnemyIntoGround());
     }
 
     IEnumerator WaitForDeathAnimation()
@@ -97,6 +127,6 @@ public class Wizard : MonoBehaviour
     IEnumerator SinkEnemyIntoGround()
     {
         yield return new WaitForSeconds(afterSlowDelay);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
