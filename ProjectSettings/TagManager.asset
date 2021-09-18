@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - projectile
+  - FxTemporaire
+  - Spell
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -12,8 +16,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Ground
+  - Enemy
   - 
   - 
   - 
