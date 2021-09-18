@@ -4,10 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - projectile
-  - FxTemporaire
-  - Spell
-  - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
