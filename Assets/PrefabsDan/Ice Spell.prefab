@@ -1336,7 +1336,19 @@ MonoBehaviour:
   restoreOriginalParent: 0
   onPickUp:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8753097817223658481}
+        m_TargetAssemblyTypeName: IceSpell, Assembly-CSharp
+        m_MethodName: startAiming
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDetachFromHand:
     m_PersistentCalls:
       m_Calls:
@@ -1399,6 +1411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beamDuration: 3
   startingPosition: {fileID: 0}
+  beamDamage: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
