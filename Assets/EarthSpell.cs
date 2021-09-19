@@ -25,7 +25,7 @@ public class EarthSpell : MonoBehaviour
                 Physics.OverlapSphere(gameObject.transform.position, 10f);
 
             foreach (Collider collider in nearbyCollisions) {
-                //Get the script of the enemy and apply instant damage
+                collider.GetComponent<Enemy>().TakeDamage(50);
             }
             Destroy(gameObject);
         }

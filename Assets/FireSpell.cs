@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireSpell : MonoBehaviour
 {
+    public LayerMask enemyLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,18 +18,21 @@ public class FireSpell : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Ground")) {
-            //Debug.Log("COLLIDE");
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy")) {
+            Debug.Log("COLLIDE");
             //Play effect
             //Get all enemies within a radius
-            //TODO: add enemy layers
             Collider[] nearbyCollisions =
-                Physics.OverlapSphere(gameObject.transform.position, 10f);
+                Physics.OverlapSphere(collision.GetContact(0).point, 50f, enemyLayer);
 
             foreach(Collider collider in nearbyCollisions) {
-                //Get the script of the enemy and apply the coroutine
+                Debug.Log("COLLISION NAME " + collider.gameObject.name);
+                //TODO: Have damage over time method
+                collider.GetComponent<Enemy>().TakeDamage(50);
             }
             Destroy(gameObject);
         }
+        
     }
+    
 }

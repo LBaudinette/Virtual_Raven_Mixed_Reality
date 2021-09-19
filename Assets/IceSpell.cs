@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class IceSpell : MonoBehaviour
 {
+    public float beamDuration;
+    public Transform startingPosition; 
+    private LineRenderer lineRenderer;
+
+    private Coroutine coroutine;
+    private float beamTimer;
+    public LayerMask enemyLayer;
     // Start is called before the first frame update
     void Start()
     {
-        
+        lineRenderer = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -16,18 +23,35 @@ public class IceSpell : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Ground")) {
-            //Play effect
-            //Get all enemies within a radius
-            //TODO: add enemy layers
-            Collider[] nearbyCollisions =
-                Physics.OverlapSphere(gameObject.transform.position, 10f);
+    public void startBeam() {
+        lineRenderer.enabled = true;
+        GetComponent<MeshRenderer>().enabled = false;
+        coroutine = StartCoroutine(displayBeam());
+    }
 
-            foreach (Collider collider in nearbyCollisions) {
-                //Get the script of the enemy and apply the coroutine
+    private IEnumerator displayBeam() {
+        while(beamTimer < beamDuration) {
+            beamTimer += Time.deltaTime;
+            lineRenderer.SetPosition(0, startingPosition.position);
+            lineRenderer.SetPosition(1, startingPosition.transform.forward * 50);
+            Debug.DrawRay(startingPosition.position, startingPosition.transform.forward * 50);
+            RaycastHit hit;
+            if (Physics.Raycast(startingPosition.position, startingPosition.transform.forward * 50, out hit, Mathf.Infinity, enemyLayer)) {
+                if (hit.collider.gameObject.CompareTag("Enemy")) {
+                    Enemy enemyScript = hit.collider.gameObject.GetComponent<Enemy>();
+                    enemyScript.TakeDamage(2);
+                    enemyScript.Slow(50);
+                }
             }
-            Destroy(gameObject);
+
+            yield return null;
         }
+
+        beamTimer = 0;
+        lineRenderer.enabled = false;
+        Destroy(gameObject);
+    }
+    private void OnCollisionEnter(Collision collision) {
+        
     }
 }
