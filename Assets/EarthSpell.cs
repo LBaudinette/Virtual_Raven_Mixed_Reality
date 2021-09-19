@@ -4,29 +4,53 @@ using UnityEngine;
 
 public class EarthSpell : MonoBehaviour
 {
+    public Transform startingPosition;
+    private LineRenderer lineRenderer;
+    private bool isAiming = false;
+
+    public LayerMask enemyLayer;
+    public float firingForce;
     // Start is called before the first frame update
     void Start()
     {
-        
+        lineRenderer = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isAiming) {
+            lineRenderer.SetPosition(0, gameObject.transform.position);
+            lineRenderer.SetPosition(1, startingPosition.transform.forward * 50);
+            lineRenderer.startColor = Color.white;
+            lineRenderer.endColor = Color.white;
+        }
+    }
+    
+    public void fireSpell() {
+        lineRenderer.enabled = false;
+        isAiming = false;
+        //GetComponent<SphereCollider>().isTrigger = true;
+        GetComponent<Rigidbody>().AddForce(startingPosition.transform.forward * firingForce, ForceMode.Impulse);
+    }
+
+    public void startAiming() {
+        lineRenderer.enabled = true;
+        isAiming = true;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("Enemy")) {
+            Debug.Log("ENEMY HIT");
+            other.gameObject.GetComponent<Enemy>().TakeDamage(50);
+            Destroy(gameObject);
+        }
         
     }
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("Ground")) {
-            //Play effect
-            //Get all enemies within a radius
-            //TODO: add enemy layers
-            Collider[] nearbyCollisions =
-                Physics.OverlapSphere(gameObject.transform.position, 10f);
-
-            foreach (Collider collider in nearbyCollisions) {
-                collider.GetComponent<Enemy>().TakeDamage(50);
-            }
+            Debug.Log("GROUND HIT");
             Destroy(gameObject);
         }
     }

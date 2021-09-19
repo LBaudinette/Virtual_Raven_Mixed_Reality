@@ -51,7 +51,4 @@ public class IceSpell : MonoBehaviour
         lineRenderer.enabled = false;
         Destroy(gameObject);
     }
-    private void OnCollisionEnter(Collision collision) {
-        
-    }
 }
