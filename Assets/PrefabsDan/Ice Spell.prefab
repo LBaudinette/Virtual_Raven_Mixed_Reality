@@ -1411,7 +1411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beamDuration: 3
   startingPosition: {fileID: 0}
-  beamDamage: 0
+  beamDamage: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
