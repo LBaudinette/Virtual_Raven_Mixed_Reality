@@ -3681,7 +3681,7 @@ MonoBehaviour:
   capacity: 2048
   stripCapacity: 16
   particlePerStripCount: 16
-  m_Space: 0
+  m_Space: 1
 --- !u!114 &8926484042661614781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6056,12 +6056,12 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children:
-  - {fileID: 8926484042661615270}
   - {fileID: 8926484042661615244}
   - {fileID: 8926484042661615246}
   - {fileID: 8926484042661615260}
   - {fileID: 8926484042661615316}
   - {fileID: 8926484042661615348}
+  - {fileID: 8926484042661615270}
   m_UIPosition: {x: 117, y: 261}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
@@ -6411,7 +6411,7 @@ MonoBehaviour:
   capacity: 512
   stripCapacity: 16
   particlePerStripCount: 16
-  m_Space: 0
+  m_Space: 1
 --- !u!114 &8926484042661615228
 MonoBehaviour:
   m_ObjectHideFlags: 0
