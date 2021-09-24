@@ -20,8 +20,8 @@ public class EarthSpell : MonoBehaviour
     void Update()
     {
         if (isAiming) {
-            lineRenderer.SetPosition(0, gameObject.transform.position);
-            lineRenderer.SetPosition(1, startingPosition.transform.forward * 50);
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, transform.forward * 50);
             lineRenderer.startColor = Color.white;
             lineRenderer.endColor = Color.white;
         }
@@ -31,7 +31,7 @@ public class EarthSpell : MonoBehaviour
         lineRenderer.enabled = false;
         isAiming = false;
         //GetComponent<SphereCollider>().isTrigger = true;
-        GetComponent<Rigidbody>().AddForce(startingPosition.transform.forward * firingForce, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(transform.forward * firingForce, ForceMode.Impulse);
     }
 
     public void startAiming() {

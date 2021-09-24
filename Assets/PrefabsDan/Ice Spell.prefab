@@ -1153,7 +1153,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5227821833574773151}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.714, y: 0.881, z: -0.484}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 5227821833405316492}
@@ -1187,7 +1187,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 27f6f36484361914793a6735393cad3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1383,12 +1383,12 @@ MonoBehaviour:
   poseEditorExpanded: 1
   blendEditorExpanded: 1
   poseNames:
-  - spherePose (MAIN)
+  - sphereSmallPose (MAIN)
   overridePreviewLeftHandPrefab: {fileID: 1000013348574242, guid: 638779290bce1af49b356f33dcc6fccf,
     type: 3}
   overridePreviewRightHandPrefab: {fileID: 1000010304998954, guid: 6def53d002137b747aec0b29551e0e25,
     type: 3}
-  skeletonMainPose: {fileID: 11400000, guid: 4c3a83da33c30f44b82278a7f4ae8bd2, type: 2}
+  skeletonMainPose: {fileID: 11400000, guid: ccd16738d1f943640aa2aed1071a3897, type: 2}
   skeletonAdditionalPoses: []
   showLeftPreview: 0
   showRightPreview: 1
@@ -1410,7 +1410,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beamDuration: 3
-  startingPosition: {fileID: 0}
   beamDamage: 1
   enemyLayer:
     serializedVersion: 2

@@ -6,7 +6,8 @@ using UnityEngine;
 public class IceSpell : MonoBehaviour
 {
     public float beamDuration;
-    public Transform startingPosition;
+    //public Transform startingPosition;
+    private Transform handTransform;
     public float beamDamage;
     private LineRenderer lineRenderer;
     private bool isAiming = false;
@@ -18,14 +19,15 @@ public class IceSpell : MonoBehaviour
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         if (isAiming) {
-            lineRenderer.SetPosition(0, gameObject.transform.position);
-            lineRenderer.SetPosition(1, startingPosition.transform.forward * 50);
+            lineRenderer.SetPosition(0, handTransform.position);
+            lineRenderer.SetPosition(1, handTransform.forward * 50);
             lineRenderer.startColor = Color.white;
             lineRenderer.endColor = Color.white;
         }
@@ -43,17 +45,18 @@ public class IceSpell : MonoBehaviour
     public void startAiming() {
         lineRenderer.enabled = true;
         isAiming = true;
+        handTransform = transform.parent;
     }
 
     private IEnumerator displayBeam() {
 
         while (beamTimer < beamDuration) {
             beamTimer += Time.deltaTime;
-            lineRenderer.SetPosition(0, startingPosition.transform.position);
-            lineRenderer.SetPosition(1, startingPosition.transform.forward * 50);
-            Debug.DrawRay(startingPosition.position, startingPosition.transform.forward * 50);
+            lineRenderer.SetPosition(0, handTransform.position);
+            lineRenderer.SetPosition(1, handTransform.forward * 50);
+            Debug.DrawRay(handTransform.position, handTransform.forward * 50);
             RaycastHit hit;
-            if (Physics.Raycast(startingPosition.position, startingPosition.transform.forward * 50, out hit, Mathf.Infinity, enemyLayer)) {
+            if (Physics.Raycast(handTransform.position, handTransform.forward * 50, out hit, Mathf.Infinity, enemyLayer)) {
                 if (hit.collider.gameObject.CompareTag("Enemy")) {
                     Enemy enemyScript = hit.collider.gameObject.GetComponent<Enemy>();
                     enemyScript.TakeDamage(beamDamage);
