@@ -4,7 +4,15 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - testSpell: {fileID: 4477819705167565345, guid: 9d9dc301a68acaf40afc9ed64fa2c831,
+  - spellOneTransform: {instanceID: 0}
+  - spellTwoTransform: {instanceID: 0}
+  - spellSlots: {instanceID: 0}
+  - testSpell: {instanceID: 0}
+  - earthSpell: {fileID: 340917076926328025, guid: 5f78a5954243adc4da424370e19ee20e,
+      type: 3}
+  - fireSpell: {fileID: 5593585448225005557, guid: f13414f1da09fcc43bff1f113487cf47,
+      type: 3}
+  - iceSpell: {fileID: 5227821833574773151, guid: 4a5ec038cf27d5c4fadbdad245aaa372,
       type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

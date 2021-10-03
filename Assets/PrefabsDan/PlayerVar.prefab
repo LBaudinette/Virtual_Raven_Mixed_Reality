@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2419159541569352744}
-  - component: {fileID: 5616057931961433055}
-  - component: {fileID: 3247817540289866982}
+  - component: {fileID: 821431669}
+  - component: {fileID: 2793873455616479302}
   m_Layer: 26
   m_Name: Spell Shield
   m_TagString: Untagged
@@ -25,30 +25,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2380368341067221604}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.051999986, y: -0.015699983, z: -0.11630082}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6722272508191067957}
+  - {fileID: 5386714821177043228}
   m_Father: {fileID: 3060702914524837079}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &5616057931961433055
-CircleCollider2D:
+--- !u!135 &821431669
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2380368341067221604}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.38
---- !u!114 &3247817540289866982
+  m_Radius: 0.22081956
+  m_Center: {x: 0, y: 0, z: -0.27918044}
+--- !u!114 &2793873455616479302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,8 +59,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad029eef237b91944a3db58f412dfb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellSlots: {fileID: 0}
-  testSpell: {fileID: 4477819705167565345, guid: 9d9dc301a68acaf40afc9ed64fa2c831,
+  spellOneTransform: {fileID: 0}
+  spellTwoTransform: {fileID: 0}
+  earthSpell: {fileID: 340917076926328025, guid: 5f78a5954243adc4da424370e19ee20e,
+    type: 3}
+  fireSpell: {fileID: 5593585448225005557, guid: f13414f1da09fcc43bff1f113487cf47,
+    type: 3}
+  iceSpell: {fileID: 5227821833574773151, guid: 4a5ec038cf27d5c4fadbdad245aaa372,
     type: 3}
 --- !u!1 &3060702914525004493
 GameObject:
@@ -98,7 +102,6 @@ Transform:
   - {fileID: 3060702914524796033}
   - {fileID: 3060702914524773927}
   - {fileID: 2419159541569352744}
-  - {fileID: 1615380402618912861}
   m_Father: {fileID: 3060702914524855261}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2734,7 +2737,7 @@ Transform:
   m_Father: {fileID: 3060188147260987951}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3173315110467218074
+--- !u!1 &6069576324470484352
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2742,25 +2745,55 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1615380402618912861}
+  - component: {fileID: 6722272508191067957}
   m_Layer: 26
-  m_Name: Spell Slots
+  m_Name: Spell Slot One
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1615380402618912861
+--- !u!4 &6722272508191067957
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3173315110467218074}
+  m_GameObject: {fileID: 6069576324470484352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3060702914524837079}
-  m_RootOrder: 5
+  m_Father: {fileID: 2419159541569352744}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7607339618089681036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5386714821177043228}
+  m_Layer: 26
+  m_Name: Spell Slot Two
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5386714821177043228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7607339618089681036}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2419159541569352744}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

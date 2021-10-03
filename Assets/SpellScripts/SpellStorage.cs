@@ -8,9 +8,6 @@ public class SpellStorage : MonoBehaviour
     private bool spellOneEmpty;
     private bool spellTwoEmpty;
 
-    public GameObject spellSlots;
-    public GameObject testSpell;
-
     public GameObject earthSpell;
     public GameObject fireSpell;
     public GameObject iceSpell;
@@ -30,11 +27,23 @@ public class SpellStorage : MonoBehaviour
         
     }
 
+    public void checkSlots() {
+        if(spellOneTransform.childCount == 0) {
+            spellOneEmpty = true;
+        }
+        if (spellOneTransform.childCount == 0) {
+            spellTwoEmpty = true;
+
+        }
+    }
+
     public void addSpell(SpellType newSpell) {
         if (spellOneEmpty) {
+            spellOneEmpty = false;
             createSpell(newSpell, spellOneTransform);
         }
         else if (spellTwoEmpty) {
+            spellTwoEmpty = false;
             createSpell(newSpell, spellTwoTransform);
         }
         //If both slots are full then don't add this new spell
