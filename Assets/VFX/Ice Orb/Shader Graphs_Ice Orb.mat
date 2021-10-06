@@ -62,11 +62,13 @@ Material:
     - Vector1_1ebe8d63cdca40648b384940badb3ef3: 0
     - Vector1_2b260a6e21d24f7c960298a48db5a988: 10
     - Vector1_334ad224a425457c8b415217c2bf2540: 1
-    - Vector1_3d3afc97e24349cd838ed757f2cfaa3b: 0.249
+    - Vector1_3d3afc97e24349cd838ed757f2cfaa3b: 0.111
     - Vector1_43c4da92224f4a0b915553995a8e1a1a: 0.01
-    - Vector1_5a33df1a8c8444e8bf9c739d55c59eb8: -0.44
-    - Vector1_6e9afaebaf314b568c95243cdf49466f: 0.906
-    - Vector1_8f9bf9cbce554eefab33826b2469c894: 3
+    - Vector1_5a33df1a8c8444e8bf9c739d55c59eb8: -0.06
+    - Vector1_6e9afaebaf314b568c95243cdf49466f: 0.815
+    - Vector1_8f9bf9cbce554eefab33826b2469c894: 2
+    - Vector1_a842f4d6a8444d7594f721bf34ff63c7: 2
+    - Vector1_db0a448efb1e4b28b697fa256b514a42: 1
     - Vector1_fc890355e42946f6a80030151544e27a: 1
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 0
@@ -116,7 +118,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - Color_1102f2bbbfa4463dbd8e9082b827e69d: {r: 0, g: 1.549738, b: 1.4746807, a: 0}
+    - Color_1102f2bbbfa4463dbd8e9082b827e69d: {r: 0, g: 0.5397825, b: 1, a: 0}
     - Color_f369ef3c54464ed980fd3dc7c4c84f3f: {r: 0, g: 3.4764395, b: 3.9999995, a: 0}
     - Vector2_edc9bbdc1e7e4a0587ab1bb1bfcae310: {r: 1, g: 1, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
