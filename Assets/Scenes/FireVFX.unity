@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4133.2354, g: 3203.1257, b: 3608.4663, a: 1}
+  m_IndirectSpecularColor: {r: 4133.2354, g: 3203.1064, b: 3608.4595, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -169,37 +169,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &138820442
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 138820443}
-  m_Layer: 0
-  m_Name: Emitter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &138820443
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 138820442}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1044512731}
-  m_Father: {fileID: 161540780}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &161540779
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,11 +193,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161540779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 1, z: 0}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 138820443}
+  - {fileID: 1044512731}
   - {fileID: 1069331255}
+  - {fileID: 1542611173}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -754,7 +724,7 @@ LineRenderer:
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 257
-  m_RendererPriority: 0
+  m_RendererPriority: 1
   m_Materials:
   - {fileID: 2100000, guid: 43a976554d9619643aef81c6f73d8915, type: 2}
   m_StaticBatchInfo:
@@ -783,7 +753,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 10}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.25
+    widthMultiplier: 0.3
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -801,7 +771,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 1, b: 0.9803922, a: 1}
+      key0: {r: 0, g: 1, b: 0.98399997, a: 1}
       key1: {r: 0.08877712, g: 0.19989465, b: 0.990566, a: 1}
       key2: {r: 0, g: 0.0219529, b: 0.3207547, a: 1}
       key3: {r: 0, g: 0.0219529, b: 0.3207547, a: 0}
@@ -810,7 +780,7 @@ LineRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 38743
+      ctime1: 34117
       ctime2: 65535
       ctime3: 65535
       ctime4: 0
@@ -847,7 +817,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 138820443}
+  m_Father: {fileID: 161540780}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1069331254
@@ -862,7 +832,7 @@ GameObject:
   - component: {fileID: 1069331257}
   - component: {fileID: 1069331256}
   m_Layer: 0
-  m_Name: BeamEmitter
+  m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -900,7 +870,9 @@ VFXRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -929,7 +901,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069331254}
   m_Enabled: 1
-  m_Asset: {fileID: 0}
+  m_Asset: {fileID: 8926484042661614526, guid: 5c37a66b81345a1468f6ade6c48dd541, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -944,6 +916,15 @@ VisualEffect:
       - m_Value: 0.5
         m_Name: MaxBurstTime
         m_Overridden: 1
+      - m_Value: 0.15
+        m_Name: Spawn Circle Radius
+        m_Overridden: 1
+      - m_Value: 1.25
+        m_Name: LifetimeMax
+        m_Overridden: 1
+      - m_Value: 0.5
+        m_Name: LifetimeMin
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -952,6 +933,18 @@ VisualEffect:
       m_Array:
       - m_Value: {x: 9.214659, y: 42.722507, z: 41.214653, w: 0}
         m_Name: ParticleColor
+        m_Overridden: 1
+      - m_Value: {x: 9.39448, y: 14.259478, z: 13.476604, w: 0}
+        m_Name: Snowflake Particle
+        m_Overridden: 1
+      - m_Value: {x: 16.753925, y: 57.298424, z: 63.999992, w: 0}
+        m_Name: ParticleColorMin
+        m_Overridden: 1
+      - m_Value: {x: 4.2498827, y: 14.762752, z: 42.722507, w: 0}
+        m_Name: ParticleColorMax
+        m_Overridden: 1
+      - m_Value: {x: 4.9005227, y: 7.999999, z: 7.287957, w: 0}
+        m_Name: SnowflakeColor
         m_Overridden: 1
     m_Uint:
       m_Array: []
@@ -1062,6 +1055,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1542611172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1542611173}
+  m_Layer: 0
+  m_Name: Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1542611173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542611172}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 161540780}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1883546033
 GameObject:
@@ -1245,12 +1268,12 @@ PrefabInstance:
     - target: {fileID: 2731522835028072347, guid: 3687c87a83ced0f4386c7d5716d4a5a0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.804
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2731522835028072347, guid: 3687c87a83ced0f4386c7d5716d4a5a0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.138
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2731522835028072347, guid: 3687c87a83ced0f4386c7d5716d4a5a0,
         type: 3}

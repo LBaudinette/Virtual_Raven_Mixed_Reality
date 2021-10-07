@@ -10,14 +10,14 @@ Material:
   m_Name: IceBeamMat
   m_Shader: {fileID: -6465566751694194690, guid: 9986cbca8ec08084ba6e69a920fe74f9,
     type: 3}
-  m_ShaderKeywords: _ALPHATEST_ON _DISABLE_SSR_TRANSPARENT
+  m_ShaderKeywords: _ALPHATEST_ON _DISABLE_SSR_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2475
+  m_CustomRenderQueue: 3000
   stringTagMap:
     MotionVector: User
-    RenderType: TransparentCutout
+    RenderType: Transparent
   disabledShaderPasses:
   - MOTIONVECTORS
   - TransparentDepthPrepass
@@ -36,7 +36,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_a9a3eb40bfca4eaca6bc7eb0af388dd3:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1527695137670a74e9b2f7ad1effe1b0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -52,16 +52,16 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_0d182aae5a264f558ae675b112b52763: 0.608
-    - Vector1_279fbf440306417eb14640974e764fc5: 0.009
+    - Vector1_0d182aae5a264f558ae675b112b52763: 0.319
+    - Vector1_279fbf440306417eb14640974e764fc5: 0.004
     - Vector1_4fad32d07c0642a385399f0a1a2c0a93: 0.25
     - Vector1_5794bdfd5ae24d6d87b4f82c318088b7: 10
-    - Vector1_5e7c611ae1c94028a341f8b44876ddfe: 10
-    - Vector1_e8578128f310470a97dacd27d265131a: 0.233
-    - Vector1_ec29f0cda45f44bd981777b9d5f9c18f: 2
+    - Vector1_5e7c611ae1c94028a341f8b44876ddfe: 6
+    - Vector1_e8578128f310470a97dacd27d265131a: 0.254
+    - Vector1_ec29f0cda45f44bd981777b9d5f9c18f: 1
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 1
-    - _AlphaDstBlend: 0
+    - _AlphaDstBlend: 10
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
@@ -71,7 +71,7 @@ Material:
     - _DepthOffsetEnable: 0
     - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 2
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 0
     - _OpaqueCullMode: 2
@@ -79,21 +79,21 @@ Material:
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
-    - _RenderQueueType: 1
+    - _RenderQueueType: 4
     - _RequireSplitLighting: 0
     - _SrcBlend: 1
     - _StencilRef: 0
-    - _StencilRefDepth: 8
+    - _StencilRefDepth: 0
     - _StencilRefDistortionVec: 4
-    - _StencilRefGBuffer: 10
-    - _StencilRefMV: 40
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 8
     - _StencilWriteMaskDistortionVec: 4
     - _StencilWriteMaskGBuffer: 14
     - _StencilWriteMaskMV: 40
     - _SupportDecals: 1
-    - _SurfaceType: 0
+    - _SurfaceType: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
     - _TransparentDepthPostpassEnable: 0
@@ -102,15 +102,15 @@ Material:
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
-    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestDepthEqualForOpaque: 4
     - _ZTestGBuffer: 3
     - _ZTestTransparent: 4
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
-    - Color_cbc3703fb3d64cc988add10385084fc0: {r: 47.937256, g: 47.937256, b: 47.937256,
+    - Color_cbc3703fb3d64cc988add10385084fc0: {r: 766.9961, g: 766.9961, b: 766.9961,
         a: 0}
-    - Vector2_3913362bebc441678ba5267f280c3d40: {r: -1.5, g: 0, b: 0, a: 0}
-    - Vector2_7f08bcba55c04b309995041beb6c3f58: {r: -2, g: 0, b: 0, a: 0}
+    - Vector2_3913362bebc441678ba5267f280c3d40: {r: -1, g: 0, b: 0, a: 0}
+    - Vector2_7f08bcba55c04b309995041beb6c3f58: {r: -1, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

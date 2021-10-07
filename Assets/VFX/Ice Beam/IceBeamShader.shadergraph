@@ -417,7 +417,7 @@
                 "m_Node": {
                     "m_Id": "5999a65aafcf4d06940245018ae1a187"
                 },
-                "m_SlotId": 4
+                "m_SlotId": 3
             },
             "m_InputSlot": {
                 "m_Node": {
@@ -1335,9 +1335,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -3913.0,
-            "y": 1540.0,
-            "width": 175.00001525878907,
+            "x": -4044.0,
+            "y": 1554.0001220703125,
+            "width": 175.0,
             "height": 34.0
         }
     },
@@ -1960,10 +1960,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -3496.999755859375,
-            "y": 1476.0,
+            "x": -3832.0,
+            "y": 1487.0001220703125,
             "width": 128.0,
-            "height": 101.00000762939453
+            "height": 101.0
         }
     },
     "m_Slots": [
@@ -2232,7 +2232,7 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2525.0,
+            "x": -2523.0,
             "y": 921.0,
             "width": 146.0,
             "height": 34.0
@@ -3238,7 +3238,7 @@
     "m_DOTSInstancing": false,
     "m_Version": 0,
     "m_FirstTimeMigrationExecuted": true,
-    "inspectorFoldoutMask": 1
+    "inspectorFoldoutMask": 9
 }
 
 {
