@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4133.2354, g: 3203.1064, b: 3608.4595, a: 1}
+  m_IndirectSpecularColor: {r: 3817.0686, g: 2778.4666, b: 2635.8435, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -724,7 +724,7 @@ LineRenderer:
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 257
-  m_RendererPriority: 1
+  m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 43a976554d9619643aef81c6f73d8915, type: 2}
   m_StaticBatchInfo:
