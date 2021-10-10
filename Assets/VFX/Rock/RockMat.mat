@@ -52,9 +52,20 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_07bf1d0630ae4502afb337c269149160: 2
-    - Vector1_34f4077a86bc4ff29cb498459127e71a: 1
-    - Vector1_49671cc1b8c4491081a7c7bf598e35e6: 3
+    - DeformAmount_: 0.65
+    - DeformPower_: 0.5
+    - Metallic_: 0
+    - NormalStrength_: 0.5
+    - Smoothness_: 0
+    - Vector1_07bf1d0630ae4502afb337c269149160: 12
+    - Vector1_125472022f6648199f5948b15e26e6ad: 0.977
+    - Vector1_34f4077a86bc4ff29cb498459127e71a: 0.25
+    - Vector1_355e3615615a4b8d82e8be7a6cf40908: 0
+    - Vector1_49671cc1b8c4491081a7c7bf598e35e6: 5
+    - Vector1_4a72224c2644445b8ecec29f869541b8: 0
+    - Vector1_6f2271ddf0694e1589ab08357bfb3d4c: 0.5
+    - VoronoiDensity_: 5
+    - VoronoiOffset_: 15
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
@@ -103,6 +114,10 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
+    - Color_: {r: 0.7075472, g: 0.5551139, b: 0.45723566, a: 0}
+    - Color_5a360c89f523472b976cc5d5153d1c7a: {r: 0.5660378, g: 0.48330432, b: 0.4298683,
+        a: 0}
+    - Vector2_047525c0a0124e2fb28bc0b994202c17: {r: 0.1, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
