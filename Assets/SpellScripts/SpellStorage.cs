@@ -18,13 +18,14 @@ public class SpellStorage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        spellOneEmpty = true;
+        spellTwoEmpty = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        checkSlots();
     }
 
     public void checkSlots() {
@@ -50,34 +51,40 @@ public class SpellStorage : MonoBehaviour
     }
 
     private void createSpell(SpellType newSpell, Transform positionTransform) {
+        Debug.Log("SPELL STORED");
+
+        GameObject newSpellObject = null;
         switch (newSpell) {
             case SpellType.earth:
-                Instantiate(earthSpell, positionTransform);
+                newSpellObject = Instantiate(earthSpell, positionTransform);
                 break;
             case SpellType.ice:
-                Instantiate(iceSpell, positionTransform);
+                newSpellObject =  Instantiate(iceSpell, positionTransform);
                 break;
             case SpellType.fire:
-                Instantiate(fireSpell, positionTransform);
+                newSpellObject = Instantiate(fireSpell, positionTransform);
                 break;
         }
+        newSpellObject.GetComponent<Rigidbody>().isKinematic = true;
+
+
     }
 
-    private void OnTriggerEnter(Collider other) {
-        Debug.Log($"COLLISION NAME: {other.gameObject.name}");
-        switch (other.gameObject.tag) {
+    private void OnCollisionEnter(Collision collision) {
+        Debug.Log($"COLLISION NAME: {collision.gameObject.name}");
+        switch (collision.gameObject.tag) {
             case "IceWizardSpell":
                 addSpell(SpellType.ice);
                 break;
-            case "EarthWizardSpell":
+            case "Spell":
                 addSpell(SpellType.earth);
                 break;
             case "FireWizardSpell":
                 addSpell(SpellType.fire);
                 break;
         }
-        
+
         //Destroy the spell that collided with it
-        Destroy(other.gameObject);
+        Destroy(collision.gameObject);
     }
 }

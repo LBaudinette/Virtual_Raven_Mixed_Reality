@@ -31,6 +31,7 @@ public class EarthSpell : MonoBehaviour
         lineRenderer.enabled = false;
         isAiming = false;
         //GetComponent<SphereCollider>().isTrigger = true;
+        GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().AddForce(transform.forward * firingForce, ForceMode.Impulse);
     }
 

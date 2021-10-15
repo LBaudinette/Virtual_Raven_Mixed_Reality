@@ -9,6 +9,7 @@ TagManager:
   - FxTemporaire
   - Spell
   - Ground
+  - RHSAttatchment
   layers:
   - Default
   - TransparentFX

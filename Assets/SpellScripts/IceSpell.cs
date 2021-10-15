@@ -7,6 +7,7 @@ public class IceSpell : MonoBehaviour
 {
     public float beamDuration;
     //public Transform startingPosition;
+    [SerializeField]
     private Transform handTransform;
     public float beamDamage;
     private LineRenderer lineRenderer;
@@ -19,15 +20,15 @@ public class IceSpell : MonoBehaviour
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
-
+        handTransform = GameObject.FindWithTag("RHSAttatchment").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (isAiming) {
-            lineRenderer.SetPosition(0, handTransform.position);
-            lineRenderer.SetPosition(1, handTransform.forward * 50);
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, transform.forward * 50);
             lineRenderer.startColor = Color.white;
             lineRenderer.endColor = Color.white;
         }
@@ -49,7 +50,6 @@ public class IceSpell : MonoBehaviour
     }
 
     private IEnumerator displayBeam() {
-
         while (beamTimer < beamDuration) {
             beamTimer += Time.deltaTime;
             lineRenderer.SetPosition(0, handTransform.position);
