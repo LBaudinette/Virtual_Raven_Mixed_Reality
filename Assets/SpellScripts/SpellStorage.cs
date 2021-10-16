@@ -87,4 +87,22 @@ public class SpellStorage : MonoBehaviour
         //Destroy the spell that collided with it
         Destroy(collision.gameObject);
     }
+
+    private void OnTriggerEnter(Collider other) {
+        Debug.Log($"COLLISION NAME: {other.gameObject.name}");
+        switch (other.gameObject.tag) {
+            case "IceWizardSpell":
+                addSpell(SpellType.ice);
+                break;
+            case "Spell":
+                addSpell(SpellType.earth);
+                break;
+            case "FireWizardSpell":
+                addSpell(SpellType.fire);
+                break;
+        }
+
+        //Destroy the spell that collided with it
+        Destroy(other.gameObject);
+    }
 }
