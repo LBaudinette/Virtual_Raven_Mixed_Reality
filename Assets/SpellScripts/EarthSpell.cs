@@ -42,7 +42,7 @@ public class EarthSpell : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Enemy")) {
-            Debug.Log("ENEMY HIT");
+            Debug.Log("ENEMY HIT: DESTROY");
             other.gameObject.GetComponent<Enemy>().TakeDamage(50);
             Destroy(gameObject);
         }
@@ -51,7 +51,7 @@ public class EarthSpell : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("Ground")) {
-            Debug.Log("GROUND HIT");
+            Debug.Log("GROUND HIT: DESTROY");
             Destroy(gameObject);
         }
     }

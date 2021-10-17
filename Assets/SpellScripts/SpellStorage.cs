@@ -32,13 +32,14 @@ public class SpellStorage : MonoBehaviour
         if(spellOneTransform.childCount == 0) {
             spellOneEmpty = true;
         }
-        if (spellOneTransform.childCount == 0) {
+        if (spellTwoTransform.childCount == 0) {
             spellTwoEmpty = true;
 
         }
     }
 
     public void addSpell(SpellType newSpell) {
+        Debug.Log(newSpell.ToString());
         if (spellOneEmpty) {
             spellOneEmpty = false;
             createSpell(newSpell, spellOneTransform);
@@ -70,31 +71,13 @@ public class SpellStorage : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        Debug.Log($"COLLISION NAME: {collision.gameObject.name}");
-        switch (collision.gameObject.tag) {
-            case "IceWizardSpell":
-                addSpell(SpellType.ice);
-                break;
-            case "Spell":
-                addSpell(SpellType.earth);
-                break;
-            case "FireWizardSpell":
-                addSpell(SpellType.fire);
-                break;
-        }
-
-        //Destroy the spell that collided with it
-        Destroy(collision.gameObject);
-    }
-
     private void OnTriggerEnter(Collider other) {
         Debug.Log($"COLLISION NAME: {other.gameObject.name}");
         switch (other.gameObject.tag) {
             case "IceWizardSpell":
                 addSpell(SpellType.ice);
                 break;
-            case "Spell":
+            case "EarthWizardSpell":
                 addSpell(SpellType.earth);
                 break;
             case "FireWizardSpell":
