@@ -6,6 +6,9 @@ public class DummyPlayerScript : MonoBehaviour
 {
     public static Transform playerPosition;
 
+    [SerializeField]
+    private float health = 100;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +19,9 @@ public class DummyPlayerScript : MonoBehaviour
     void Update()
     {
         
+    }
+    
+    public void TakeDamage(int damage) {
+        health -= damage;
     }
 }

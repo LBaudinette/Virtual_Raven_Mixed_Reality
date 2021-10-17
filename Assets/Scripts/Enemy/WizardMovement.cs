@@ -19,6 +19,11 @@ public class WizardMovement : MonoBehaviour
     private bool hasAttacked = false;
     private bool isAttacking = false;
 
+    public GameObject fireSpell;
+    public GameObject iceSpell;
+    public GameObject earthSpell;
+    public Transform spellStartingPoint;
+
     private void Awake()
     {
         wizard = GetComponent<Wizard>();
@@ -186,8 +191,18 @@ public class WizardMovement : MonoBehaviour
         //Debug.Log("Attack");
 
         // --instantiate spell here--
+        switch (wizard.wizardType) {
 
-
+            case Wizard.WizardType.Fire:
+                Instantiate(fireSpell, transform.position, transform.rotation);
+                break;
+            case Wizard.WizardType.Ice:
+                Instantiate(iceSpell, transform.position, transform.rotation);
+                break;
+            case Wizard.WizardType.Ground:
+                Instantiate(earthSpell, transform.position, transform.rotation);
+                break;
+        }
         // --
 
         // wait until attack animation is done

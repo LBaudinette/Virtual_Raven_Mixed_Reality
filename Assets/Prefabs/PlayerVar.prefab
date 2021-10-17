@@ -51,9 +51,9 @@ MonoBehaviour:
   spellTwoTransform: {fileID: 5386714821177043228}
   earthSpell: {fileID: 1077929957079699974, guid: a1ecb370d80fc3d48892e251ab921b48,
     type: 3}
-  fireSpell: {fileID: 5593585448225005557, guid: f13414f1da09fcc43bff1f113487cf47,
+  fireSpell: {fileID: 2470534084707391341, guid: 8e82cfc13e30bac409da221edfce6160,
     type: 3}
-  iceSpell: {fileID: 5439785561486972593, guid: f4d85dd970145704a95ffee9adde2f66,
+  iceSpell: {fileID: 6860614507021843309, guid: d6eccb892cd6db4479c507e3416a2c46,
     type: 3}
 --- !u!65 &468437751
 BoxCollider:

@@ -20,7 +20,6 @@ public class SpellFirerTester : MonoBehaviour
         if(timer >= timeLimit) {
             GameObject tester = Instantiate(testSpell, gameObject.transform.position, gameObject.transform.rotation);
             tester.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse);
-            Debug.Log("FIRE");
             timer = 0f;
         }
         else {

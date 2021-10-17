@@ -20,8 +20,8 @@ public class EarthSpell : MonoBehaviour
     void Update()
     {
         if (isAiming) {
-            lineRenderer.SetPosition(0, transform.position);
-            lineRenderer.SetPosition(1, transform.forward * 50);
+            lineRenderer.SetPosition(0, startingPosition.position);
+            lineRenderer.SetPosition(1, startingPosition.position + startingPosition.forward * 50);
             lineRenderer.startColor = Color.white;
             lineRenderer.endColor = Color.white;
         }
@@ -32,18 +32,22 @@ public class EarthSpell : MonoBehaviour
         isAiming = false;
         //GetComponent<SphereCollider>().isTrigger = true;
         GetComponent<Rigidbody>().isKinematic = false;
-        GetComponent<Rigidbody>().AddForce(transform.forward * firingForce, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(startingPosition.forward * firingForce, ForceMode.Impulse);
     }
 
     public void startAiming() {
         lineRenderer.enabled = true;
         isAiming = true;
+        startingPosition = transform.parent.GetChild(1);
+
     }
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Enemy")) {
-            Debug.Log("ENEMY HIT: DESTROY");
-            other.gameObject.GetComponent<Enemy>().TakeDamage(50);
+            other.gameObject.GetComponent<Enemy>().TakeDamage(100);
+            Destroy(gameObject);
+        } else if (other.gameObject.CompareTag("Wizard")) {
+            other.gameObject.GetComponent<Wizard>().TakeDamage(100);
             Destroy(gameObject);
         }
         

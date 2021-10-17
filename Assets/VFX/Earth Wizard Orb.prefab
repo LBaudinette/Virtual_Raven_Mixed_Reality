@@ -137,9 +137,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5972192092111379156}
+  - component: {fileID: 5386487803267286728}
+  - component: {fileID: 6607119405228499872}
+  - component: {fileID: 3347879098777631095}
   m_Layer: 0
   m_Name: Earth Wizard Orb
-  m_TagString: Untagged
+  m_TagString: EarthWizardSpell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,6 +163,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5386487803267286728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972192092111379157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cfddb3a00cbabe459a5f60e77691d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  lifeTimer: 0
+  lifeLimit: 6
+--- !u!135 &6607119405228499872
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972192092111379157}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.19110224
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3347879098777631095
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972192092111379157}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5972192092794634390
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +218,6 @@ GameObject:
   - component: {fileID: 5972192092794634377}
   - component: {fileID: 5972192092794634378}
   - component: {fileID: 5972192092794634379}
-  - component: {fileID: 5972192092794634376}
   m_Layer: 0
   m_Name: Orb Sphere
   m_TagString: Untagged
@@ -242,16 +288,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5972192092794634376
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5972192092794634390}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
