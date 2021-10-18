@@ -9,6 +9,7 @@ public class WizardSpellScript : MonoBehaviour
     public float speed;
     public float lifeTimer = 0;
     public float lifeLimit = 6;
+    public int damageToPlayer = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,7 @@ public class WizardSpellScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
-            other.gameObject.GetComponent<DummyPlayerScript>().TakeDamage(10);
+            PlayerStats.MinusPlayerHealth(damageToPlayer);
             Destroy(gameObject);
         }
         else if (other.gameObject.CompareTag("Wall")) {
